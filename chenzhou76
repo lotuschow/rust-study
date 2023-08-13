@@ -1,0 +1,24 @@
+mod first_module {
+    pub fn print_characters() {
+        for c in 'a'..'Z' {
+            print!("{} ", c);
+        }
+        println!();
+    }
+}
+
+mod second_module {
+    pub mod sub_module {
+        pub fn print_characters() {
+            for c in 'A'..'z' {
+                print!("{} ", c);
+            }
+            println!();
+        }
+    }
+}
+
+fn main() {
+    first_module::print_characters();
+    second_module::sub_module::print_characters();
+}

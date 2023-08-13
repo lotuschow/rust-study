@@ -1,8 +1,10 @@
 [package]
-name = "my_work_01"
+name = "my_project"
 version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+edition = "2018"
 
 [dependencies]
+
+[[bin]]
+name = "chenzhou76"
+path = "src/chenzhou76.rs"

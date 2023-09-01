@@ -1,0 +1,20 @@
+fn sum_u32_collection(numbers: &[u32]) -> Option<u32> {
+    let mut sum: u32 = 0;
+
+    for &num in numbers {
+        match sum.checked_add(num) {
+            Some(result) => sum = result,
+            None => return None,
+        }
+    }
+
+    Some(sum)
+}
+
+fn main() {
+    let numbers = vec![1, 2, 3, 4, 5];
+    match sum_u32_collection(&numbers) {
+        Some(result) => println!("Sum: {}", result),
+        None => println!("Sum overflowed, returning None."),
+    }
+}

@@ -1,0 +1,59 @@
+//下面是一个使用Rust编写的函数，它接受泛型参数并计算各种形状的面积。我们将使用泛型约束（trait bound）来确保传递的参数具有计算面积的方法。首先，定义一个 AreaCalculable trait，然后实现它以计算不同形状的面积。
+
+// 定义一个 trait，用于计算各种形状的面积
+trait AreaCalculable {
+    fn calculate_area(&self) -> f64;
+}
+
+// 实现 Circle 结构体和对应的 AreaCalculable trait
+struct Circle {
+    radius: f64,
+}
+
+impl AreaCalculable for Circle {
+    fn calculate_area(&self) -> f64 {
+        std::f64::consts::PI * self.radius * self.radius
+    }
+}
+
+// 实现 Triangle 结构体和对应的 AreaCalculable trait
+struct Triangle {
+    base: f64,
+    height: f64,
+}
+
+impl AreaCalculable for Triangle {
+    fn calculate_area(&self) -> f64 {
+        0.5 * self.base * self.height
+    }
+}
+
+// 实现 Square 结构体和对应的 AreaCalculable trait
+struct Square {
+    side: f64,
+}
+
+impl AreaCalculable for Square {
+    fn calculate_area(&self) -> f64 {
+        self.side * self.side
+    }
+}
+
+// 打印各种形状的面积
+fn print_area<T: AreaCalculable>(shape: T) {
+    let area = shape.calculate_area();
+    println!("The area is: {:.2}", area);
+}
+
+fn main() {
+    let circle = Circle { radius: 5.0 };
+    let triangle = Triangle {
+        base: 4.0,
+        height: 7.0,
+    };
+    let square = Square { side: 6.0 };
+
+    print_area(circle);
+    print_area(triangle);
+    print_area(square);
+}

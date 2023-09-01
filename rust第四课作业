@@ -1,0 +1,32 @@
+// 定义交通信号灯枚举
+enum TrafficLight { 
+    Red(u32),
+    Yellow(u32),
+    Green(u32),
+}
+
+// 定义一个表示时间的 trait
+trait TimeDuration {
+    fn duration(&self) -> u32;
+}
+
+// 为交通信号灯实现 TimeDuration trait
+impl TimeDuration for TrafficLight {
+    fn duration(&self) -> u32 {
+        match self {
+            TrafficLight::Red(time) => *time,
+            TrafficLight::Yellow(time) => *time,
+            TrafficLight::Green(time) => *time,
+        }
+    }
+}
+
+fn main() {
+    let red_light = TrafficLight::Red(30);
+    let yellow_light = TrafficLight::Yellow(5);
+    let green_light = TrafficLight::Green(45);
+
+    println!("红灯持续时间：{}秒", red_light.duration());
+    println!("黄灯持续时间：{}秒", yellow_light.duration());
+    println!("绿灯持续时间：{}秒", green_light.duration());
+}

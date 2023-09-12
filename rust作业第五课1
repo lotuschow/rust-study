@@ -1,4 +1,4 @@
-第一：、decl_module! 宏：decl_module! 是定义 Substrate 模块的宏，它允许您声明模块的名称、存储项、事件和可调用函数。这是定义 Substrate 模块的重要宏之一。
+第一：、decl_module! 宏：decl_module! 是定义 Substrate 模块的宏，它允许声明模块的名称、存储项、事件和可调用函数。这是定义 Substrate 模块的重要宏之一。
 decl_module! {
     pub struct Module<T: Trait> for enum Call where origin: T::Origin {
         // 定义存储项
@@ -10,7 +10,7 @@ decl_module! {
     }
 }
 
-第二 decl_storage! 宏：decl_storage! 是定义 Substrate 存储项的宏。它允许您声明模块的存储数据结构。
+第二 decl_storage! 宏：decl_storage! 是定义 Substrate 存储项的宏。它允许声明模块的存储数据结构。
 
 decl_storage! {
     trait Store for Module<T: Trait> as TemplateModule {
@@ -34,15 +34,15 @@ decl_event!(
 关于存储结构：
 第一：常用的存储数据结构：
 
-StorageMap：StorageMap 是 Substrate 中常用的存储映射数据结构，它允许您创建基于键值对的存储。例如，您可以使用 StorageMap 存储用户余额信息
+StorageMap：StorageMap 是 Substrate 中常用的存储映射数据结构，它允许创建基于键值对的存储。可以使用 StorageMap 存储用户余额信息
 StorageMap::<_, Blake2_128Concat, AccountId, Balance>::insert(&sender, &1000);
-第二：StorageValue：StorageValue 是用于存储单个值的存储数据结构。例如，您可以使用 StorageValue 存储链的总供应量。
+第二：StorageValue：StorageValue 是用于存储单个值的存储数据结构。可以使用 StorageValue 存储链的总供应量。
 
 StorageValue::<_, Balance>::put(&TOTAL_SUPPLY, &1000000);
-第三：StorageDoubleMap：StorageDoubleMap 是用于创建双重映射存储的数据结构。它允许您在两个维度上存储键值对。例如，您可以使用 StorageDoubleMap 存储用户之间的交互信息。
+第三：StorageDoubleMap：StorageDoubleMap 是用于创建双重映射存储的数据结构。它允许在两个维度上存储键值对。例如可以使用 StorageDoubleMap 存储用户之间的交互信息。
 
 StorageDoubleMap::<_, Blake2_128Concat, AccountId, Blake2_128Concat, AccountId, u32>::insert(&sender, &receiver, &interaction_count);
-这些宏和存储数据结构是 Substrate 开发中的一些基本工具，有助于定义模块、存储数据和记录链上活动。请注意，具体的使用方式和实现可能因您的项目需求而异，需要根据您的项目进行适当的配置和定制。如果您需要更多信息或有特定问题，请随时提出。
+这些宏和存储数据结构是 Substrate 开发中的一些基本工具，有助于定义模块、存储数据和记录链上活动。请注意，具体的使用方式和实现可能因您的项目需求而异，需要根据项目进行适当的配置和定制。如果需要更多信息或有特定问题，请随时提出。
 
 
 
